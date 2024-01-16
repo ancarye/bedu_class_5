@@ -1,3 +1,5 @@
+import statistics
+
 data = {
     'students': [
         {
@@ -55,14 +57,12 @@ print(f'Students with scores: {len(students)}')
 qualified_students = list(filter(students_with_scores, students))
 print(f'Students qualified {len(qualified_students)}')
 
-import statistics
-
 def apply_final_score(student):
-
     result = statistics.mean(student['scores'])
     student['final_score'] = round(result, 2)
     return student
 
 students_with_final_score = list(map(apply_final_score, qualified_students))
 print('\n\n')
-print(students_with_final_score)
+for s in students_with_final_score:
+    print(f'{s.get("name")} - tiene promedio de {s.get("final_score")}')
